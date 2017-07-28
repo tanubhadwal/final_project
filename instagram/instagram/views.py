@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from forms import SignUpForm, LoginForm, PostForm, LikeForm, CommentForm
-from models import UserModel, SessionToken, PostModel, LikeModel, CommentModel
+from demoapp.forms import SignUpForm, LoginForm, PostForm, LikeForm, CommentForm
+from demoapp.models import UserModel, SessionToken, PostModel, LikeModel, CommentModel
 from django.contrib.auth.hashers import make_password, check_password
 from datetime import timedelta
 from django.utils import timezone
@@ -26,7 +26,7 @@ def signup_view(request):
     else:
         form = SignUpForm()
 
-    return render(request, 'index.html', {'form' : form})
+    return render(request, 'signup.html', {'form' : form})
 
 
 def login_view(request):
@@ -70,7 +70,7 @@ def post_view(request):
 
                 path = str(BASE_DIR + post.image.url)
 
-                client = ImgurClient(YOUR_CLIENT_ID, YOUR_CLIENT_SECRET)
+                client = ImgurClient('694830d95a588bb', 'feee9bb6fba57a1a46a668c4c102fd2dd64a1a38')
                 post.image_url = client.upload_from_path(path,anon=True)['link']
                 post.save()
 
