@@ -14,10 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+
 from django.contrib import admin
-from views import signup_view
+
+from django.conf import settings
+
+from django.conf.urls.static import static
+
+from InstaClone.views import signup_view, login_view, feed_view, post_view
+
+
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^test/', signup_view),
-]
+
+    url(r'^admin/',admin.site.urls),
+    url(r'^feed/', feed_view),
+
+    url(r'^login/', login_view),
+
+    url(r'^signup/', signup_view),
+
