@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 from textblob import TextBlob
 from textblob.sentiments import NaiveBayesAnalyzer
 
-APP_ACCESS_TOKEN = 'c6458215cb9e498288a86c4a2cf7516c'
+API= 'c6458215cb9e498288a86c4a2cf7516c'
 BASE_URL = 'https://api.instagram.com/v1/'
 
 def Positive_Negative(media_id):
-    request_url = (BASE_URL + 'media/%s/comments/?access_token=%s') % (media_id, APP_ACCESS_TOKEN)
+    request_url = (BASE_URL + 'media/%s/comments/?access_token=%s') % (media_id, API)
     print 'GET request url : %s' % (request_url)
     comment_info = requests.get(request_url).json()
 
