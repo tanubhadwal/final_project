@@ -43,7 +43,7 @@ def login_view(request):
                     token = SessionToken(user=user)
                     token.create_token()
                     token.save()
-                    response = redirect('feed/')
+                    response = redirect('/feed/')
                     response.set_cookie(key='session_token', value=token.session_token)
                     return response
                 else:
@@ -68,7 +68,7 @@ def post_view(request):
                 post = PostModel(user=user, image=image, caption=caption)
                 post.save()
 
-                path = str(BASE_DIR + post.image.url)
+                path = str(BASE_DIR + "\\" + post.image.url)
 
                 client = ImgurClient('694830d95a588bb', 'feee9bb6fba57a1a46a668c4c102fd2dd64a1a38')
                 post.image_url = client.upload_from_path(path,anon=True)['link']
