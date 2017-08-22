@@ -1,14 +1,18 @@
 
 import requests
 import matplotlib.pyplot as plt
-from textblob import TextBlob
-from textblob.sentiments import NaiveBayesAnalyzer
+from paralleldots import set_api_key, get_api_key
+# Setting your API key
+set_api_key('qsw38mBRbE0gUAudAxCa4BriJkrLfvlyQBN9XTe6JPo')
 
-API= 'c6458215cb9e498288a86c4a2cf7516c'
-BASE_URL = 'https://api.instagram.com/v1/'
+ # Viewing your API key
+get_api_key()
+
+
+API= 'qsw38mBRbE0gUAudAxCa4BriJkrLfvlyQBN9XTe6JPo'
 
 def Positive_Negative(media_id):
-    request_url = (BASE_URL + 'media/%s/comments/?access_token=%s') % (media_id, API)
+    request_url = ( 'media/%s/comments/?access_token=%s') % (media_id, API)
     print 'GET request url : %s' % (request_url)
     comment_info = requests.get(request_url).json()
 
